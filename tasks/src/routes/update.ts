@@ -8,7 +8,6 @@ import {
 import express, { Request, Response } from "express";
 import { param } from "express-validator";
 import { Task } from "../models/task";
-import mongoose from "mongoose";
 
 const router = express.Router();
 
