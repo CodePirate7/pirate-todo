@@ -1,4 +1,4 @@
-import { requireAuth, validateRequest } from "@cptodos/common";
+import { isObjectId, requireAuth, validateRequest } from "@cptodos/common";
 import express, { Request, Response } from "express";
 import { param } from "express-validator";
 import { Task } from "../models/task";
@@ -9,14 +9,7 @@ const router = express.Router();
 router.get(
   "/api/tasks/:id",
   requireAuth,
-  [
-    param("id").custom((value) => {
-      if (!mongoose.isValidObjectId(value)) {
-        throw new Error("id is invalid");
-      }
-      return true;
-    }),
-  ],
+  [param("id").custom(isObjectId)],
   validateRequest,
   async (req: Request, res: Response) => {
     const { id } = req.params;

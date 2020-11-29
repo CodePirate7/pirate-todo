@@ -1,4 +1,5 @@
 import {
+  isObjectId,
   NotAuthorizedError,
   NotFoundError,
   requireAuth,
@@ -14,14 +15,7 @@ const router = express.Router();
 router.delete(
   "/api/tasks/:id",
   requireAuth,
-  [
-    param("id").custom((value) => {
-      if (!mongoose.isValidObjectId(value)) {
-        throw new Error("id is invalid");
-      }
-      return true;
-    }),
-  ],
+  [param("id").custom(isObjectId)],
   validateRequest,
   async (req: Request, res: Response) => {
     const task = await Task.findById(req.params.id);
