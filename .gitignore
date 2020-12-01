@@ -1,6 +1,7 @@
-*/node_modules
-*/coverage
+node_modules
+coverage
 .DS_Store
 .vscode
+dist
 README.md
 common
