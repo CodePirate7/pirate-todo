@@ -280,9 +280,9 @@
     minimist "^1.2.0"
 
 "@cptodos/common@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.npm.taobao.org/@cptodos/common/download/@cptodos/common-1.0.2.tgz#4e5cecc7575d1cb3ab87b472ed1328aea9b517bf"
-  integrity sha1-Tlzsx1ddHLOrh7Ry7RMorqm1F78=
+  version "1.0.3"
+  resolved "https://registry.npm.taobao.org/@cptodos/common/download/@cptodos/common-1.0.3.tgz#98158c68f164a00bcd0ba934d669aebd17e4e54e"
+  integrity sha1-mBWMaPFkoAvNC6k01mmuvRfk5U4=
   dependencies:
     "@types/cookie-session" "^2.0.39"
     "@types/express" "^4.17.5"
@@ -634,7 +634,7 @@
   resolved "https://registry.npm.taobao.org/@types/mime/download/@types/mime-2.0.3.tgz?cache=0&sync_timestamp=1605054799467&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fmime%2Fdownload%2F%40types%2Fmime-2.0.3.tgz#c893b73721db73699943bfc3653b1deb7faa4a3a"
   integrity sha1-yJO3NyHbc2mZQ7/DZTsd63+qSjo=
 
-"@types/mongodb@*":
+"@types/mongodb@*", "@types/mongodb@^3.5.27":
   version "3.5.34"
   resolved "https://registry.npm.taobao.org/@types/mongodb/download/@types/mongodb-3.5.34.tgz#eaa04b9a85906129fb9aab2eb63079edcf802a98"
   integrity sha1-6qBLmoWQYSn7mqsutjB57c+AKpg=
@@ -652,7 +652,7 @@
 
 "@types/node@*":
   version "14.14.10"
-  resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-14.14.10.tgz?cache=0&sync_timestamp=1606284362366&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-14.14.10.tgz#5958a82e41863cfc71f2307b3748e3491ba03785"
+  resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-14.14.10.tgz#5958a82e41863cfc71f2307b3748e3491ba03785"
   integrity sha1-WVioLkGGPPxx8jB7N0jjSRugN4U=
 
 "@types/normalize-package-data@^2.4.0":
@@ -770,7 +770,7 @@ agent-base@6:
 
 ajv@^6.12.3:
   version "6.12.6"
-  resolved "https://registry.npm.taobao.org/ajv/download/ajv-6.12.6.tgz?cache=0&sync_timestamp=1606043514126&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fajv%2Fdownload%2Fajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
+  resolved "https://registry.npm.taobao.org/ajv/download/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
   integrity sha1-uvWmLoArB9l3A0WG+MO69a3ybfQ=
   dependencies:
     fast-deep-equal "^3.1.1"
@@ -792,14 +792,14 @@ ansi-regex@^5.0.0:
 
 ansi-styles@^3.2.1:
   version "3.2.1"
-  resolved "https://registry.npm.taobao.org/ansi-styles/download/ansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
+  resolved "https://registry.npm.taobao.org/ansi-styles/download/ansi-styles-3.2.1.tgz?cache=0&sync_timestamp=1606792391524&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fansi-styles%2Fdownload%2Fansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
   integrity sha1-QfuyAkPlCxK+DwS43tvwdSDOhB0=
   dependencies:
     color-convert "^1.9.0"
 
 ansi-styles@^4.0.0, ansi-styles@^4.1.0:
   version "4.3.0"
-  resolved "https://registry.npm.taobao.org/ansi-styles/download/ansi-styles-4.3.0.tgz#edd803628ae71c04c85ae7a0906edad34b648937"
+  resolved "https://registry.npm.taobao.org/ansi-styles/download/ansi-styles-4.3.0.tgz?cache=0&sync_timestamp=1606792391524&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fansi-styles%2Fdownload%2Fansi-styles-4.3.0.tgz#edd803628ae71c04c85ae7a0906edad34b648937"
   integrity sha1-7dgDYornHATIWuegkG7a00tkiTc=
   dependencies:
     color-convert "^2.0.1"
@@ -3354,15 +3354,16 @@ mongoose-legacy-pluralize@1.0.2:
   integrity sha1-O6n5H6UHtRhtOZ+0CFS/8Y+1Y+Q=
 
 mongoose@^5.10.17, mongoose@^5.10.18:
-  version "5.10.18"
-  resolved "https://registry.npm.taobao.org/mongoose/download/mongoose-5.10.18.tgz#ec99a8bc524bd0fd2a82b5afd6f1f720f462c45f"
-  integrity sha1-7JmovFJL0P0qgrWv1vH3IPRixF8=
+  version "5.11.0"
+  resolved "https://registry.npm.taobao.org/mongoose/download/mongoose-5.11.0.tgz#d3e84767ee438688cca01827bc042deaff4a6d91"
+  integrity sha1-0+hHZ+5DhojMoBgnvAQt6v9KbZE=
   dependencies:
+    "@types/mongodb" "^3.5.27"
     bson "^1.1.4"
     kareem "2.3.1"
     mongodb "3.6.3"
     mongoose-legacy-pluralize "1.0.2"
-    mpath "0.7.0"
+    mpath "0.8.0"
     mquery "3.2.2"
     ms "2.1.2"
     regexp-clone "1.0.0"
@@ -3370,10 +3371,10 @@ mongoose@^5.10.17, mongoose@^5.10.18:
     sift "7.0.1"
     sliced "1.0.1"
 
-mpath@0.7.0:
-  version "0.7.0"
-  resolved "https://registry.npm.taobao.org/mpath/download/mpath-0.7.0.tgz#20e8102e276b71709d6e07e9f8d4d0f641afbfb8"
-  integrity sha1-IOgQLidrcXCdbgfp+NTQ9kGvv7g=
+mpath@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.npm.taobao.org/mpath/download/mpath-0.8.0.tgz#48bc1da84e75519d4d74ee6242a4a7e16b4e1997"
+  integrity sha1-SLwdqE51UZ1NdO5iQqSn4WtOGZc=
 
 mquery@3.2.2:
   version "3.2.2"
@@ -4414,7 +4415,7 @@ string_decoder@~1.1.1:
 
 strip-ansi@^6.0.0:
   version "6.0.0"
-  resolved "https://registry.npm.taobao.org/strip-ansi/download/strip-ansi-6.0.0.tgz?cache=0&sync_timestamp=1601285718086&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fstrip-ansi%2Fdownload%2Fstrip-ansi-6.0.0.tgz#0b1571dd7669ccd4f3e06e14ef1eed26225ae532"
+  resolved "https://registry.npm.taobao.org/strip-ansi/download/strip-ansi-6.0.0.tgz#0b1571dd7669ccd4f3e06e14ef1eed26225ae532"
   integrity sha1-CxVx3XZpzNTz4G4U7x7tJiJa5TI=
   dependencies:
     ansi-regex "^5.0.0"
@@ -4845,9 +4846,9 @@ validate-npm-package-license@^3.0.1:
     spdx-expression-parse "^3.0.0"
 
 validator@^13.1.1:
-  version "13.1.17"
-  resolved "https://registry.npm.taobao.org/validator/download/validator-13.1.17.tgz#ad677736950adddd3c37209484a6b2e0966579ad"
-  integrity sha1-rWd3NpUK3d08NyCUhKay4JZlea0=
+  version "13.5.1"
+  resolved "https://registry.npm.taobao.org/validator/download/validator-13.5.1.tgz#3926dfdd07a7e7325ab657fe46f2143eac55f076"
+  integrity sha1-OSbf3Qen5zJatlf+RvIUPqxV8HY=
 
 vary@~1.1.2:
   version "1.1.2"
@@ -4984,9 +4985,9 @@ xtend@^4.0.0:
   integrity sha1-u3J3n1+kZRhrH0OPZ0+jR/2121Q=
 
 y18n@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npm.taobao.org/y18n/download/y18n-4.0.0.tgz?cache=0&sync_timestamp=1603637771177&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fy18n%2Fdownload%2Fy18n-4.0.0.tgz#95ef94f85ecc81d007c264e190a120f0a3c8566b"
-  integrity sha1-le+U+F7MgdAHwmThkKEg8KPIVms=
+  version "4.0.1"
+  resolved "https://registry.npm.taobao.org/y18n/download/y18n-4.0.1.tgz?cache=0&sync_timestamp=1606778165539&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fy18n%2Fdownload%2Fy18n-4.0.1.tgz#8db2b83c31c5d75099bb890b23f3094891e247d4"
+  integrity sha1-jbK4PDHF11CZu4kLI/MJSJHiR9Q=
 
 yargs-parser@20.x:
   version "20.2.4"

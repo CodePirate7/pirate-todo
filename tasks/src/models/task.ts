@@ -11,6 +11,7 @@ interface TaskAttrs {
 }
 
 interface TaskDoc extends mongoose.Document {
+  id: string;
   title: string;
   description: string;
   urgent: boolean;
@@ -42,6 +43,14 @@ const taskSchema = new mongoose.Schema(
     },
     important: {
       type: Boolean,
+      required: true,
+    },
+    completed: {
+      type: Boolean,
+      required: true,
+    },
+    progress: {
+      type: Number,
       required: true,
     },
     userId: {

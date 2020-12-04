@@ -11,7 +11,7 @@ const bootstrap = async () => {
     });
     console.log("Connected to MongoDB");
   } catch (err) {
-    console.error(err);
+    console.error(err.message);
   }
 
   app.listen(3000, () => {

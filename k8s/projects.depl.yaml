@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: projects-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: projects
+  template:
+    metadata:
+      labels:
+        app: projects
+    spec:
+      containers:
+        - name: projects
+          image: codepirate7/projects
+          env:
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: "http://nats-srv:4222"
+            - name: NATS_CLUSTER_ID
+              value: tasking
+            - name: MONGO_URI
+              value: "mongodb://projects-mongo-srv:27017/projects"
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: projects-srv
+spec:
+  selector:
+    app: projects
+  ports:
+    - name: projects
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

@@ -28,30 +28,42 @@ interface TaskModel extends mongoose.Model<TaskDoc> {
   build(attrs: TaskAttrs): TaskDoc;
 }
 
-const taskSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
+const taskSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+    },
+    urgent: {
+      type: Boolean,
+      required: true,
+    },
+    important: {
+      type: Boolean,
+      required: true,
+    },
+    userId: {
+      type: String,
+      required: true,
+    },
+    projectId: {
+      type: String,
+    },
   },
-  description: {
-    type: String,
-  },
-  urgent: {
-    type: Boolean,
-    required: true,
-  },
-  important: {
-    type: Boolean,
-    required: true,
-  },
-  userId: {
-    type: String,
-    required: true,
-  },
-  projectId: {
-    type: String,
-  },
-});
+  {
+    toJSON: {
+      transform(doc, ret) {
+        ret.id = ret._id;
+        delete ret._id;
+        delete ret.__v;
+        delete ret.userId;
+      },
+    },
+  }
+);
 taskSchema.statics.build = (attrs: TaskAttrs) =>
   new Task({ ...attrs, _id: attrs.id });
 

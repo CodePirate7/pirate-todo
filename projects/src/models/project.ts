@@ -47,6 +47,7 @@ const projectSchema = new mongoose.Schema(
         ret.updatedAt = ret.updatedAt.valueOf();
         delete ret._id;
         delete ret.__v;
+        delete ret.userId;
       },
     },
   }

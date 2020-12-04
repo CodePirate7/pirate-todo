@@ -16,3 +16,20 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
+    - image: codepirate7/tasks
+      context: tasks
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    - image: codepirate7/projects
+      context: projects
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    

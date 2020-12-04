@@ -7,7 +7,9 @@ import {
 } from "@cptodos/common";
 import express, { Request, Response } from "express";
 import { param } from "express-validator";
+import { TaskUpdatedPublisher } from "../events/publishers/task-updated-publisher";
 import { Task } from "../models/task";
+import { natsWrapper } from "../nats-wrapper";
 
 const router = express.Router();
 
@@ -32,6 +34,8 @@ router.put(
     });
 
     await task.save();
+
+    new TaskUpdatedPublisher(natsWrapper.client).publish(task);
 
     res.status(200).json(task);
   }

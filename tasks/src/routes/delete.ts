@@ -7,7 +7,9 @@ import {
 } from "@cptodos/common";
 import express, { Request, Response } from "express";
 import { param } from "express-validator";
+import { TaskDeletedPublisher } from "../events/publishers/task-deleted-publisher";
 import { Task } from "../models/task";
+import { natsWrapper } from "../nats-wrapper";
 
 const router = express.Router();
 
@@ -28,7 +30,7 @@ router.delete(
     }
 
     task.remove();
-
+    new TaskDeletedPublisher(natsWrapper.client).publish({ id: req.params.id });
     res.status(200).json(task);
   }
 );

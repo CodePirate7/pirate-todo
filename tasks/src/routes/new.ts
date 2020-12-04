@@ -2,6 +2,8 @@ import { body } from "express-validator";
 import { requireAuth, validateRequest } from "@cptodos/common";
 import express, { Request, Response } from "express";
 import { Task } from "../models/task";
+import { TaskCreatedPublisher } from "../events/publishers/task-created-publisher";
+import { natsWrapper } from "../nats-wrapper";
 
 const router = express.Router();
 
@@ -27,6 +29,9 @@ router.post(
       progress: 0,
     });
     await task.save();
+    console.log(task);
+    //@ts-ignore
+    new TaskCreatedPublisher(natsWrapper.client).publish(task.toJSON());
 
     res.status(201).send(task);
   }
