@@ -1,6 +1,7 @@
 import request from "supertest";
 import { app } from "../../app";
 import { Task } from "../../models/task";
+import { natsWrapper } from "../../nats-wrapper";
 
 it("has a route handler listening to /api/tasks for post requests", async () => {
   const response = await await request(app).post("/api/tasks").send({});
@@ -92,4 +93,20 @@ it("create a task with valid inputs", async () => {
   expect(tasks).toHaveLength(2);
   expect(tasks[1].title).toBe("title");
   expect(tasks[1].description).toBe("description");
+});
+
+it("publishes an created event", async () => {
+  const task = {
+    title: "title",
+    urgent: false,
+    important: false,
+  };
+
+  await request(app)
+    .post("/api/tasks")
+    .set("Cookie", global.signin())
+    .send(task)
+    .expect(201);
+
+  expect(natsWrapper.client.publish).toHaveBeenCalled();
 });

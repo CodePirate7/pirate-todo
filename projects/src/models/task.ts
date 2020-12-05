@@ -9,6 +9,8 @@ interface TaskAttrs {
   userId: string;
   completed: boolean;
   progress: number;
+  createdAt: number;
+  updatedAt: number;
 }
 
 export interface TaskDoc extends mongoose.Document {
@@ -45,12 +47,26 @@ const taskSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
+    completed: {
+      type: Boolean,
+      required: true,
+    },
+    progress: {
+      type: Number,
+      required: true,
+    },
     userId: {
       type: String,
       required: true,
     },
     projectId: {
       type: String,
+    },
+    createdAt: {
+      type: Number,
+    },
+    updatedAt: {
+      type: Number,
     },
   },
   {

@@ -78,6 +78,8 @@ it("create a project with valid inputs with tasks", async () => {
     completed: false,
     progress: 0,
     id: mongoose.Types.ObjectId().toHexString(),
+    createdAt: new Date().valueOf(),
+    updatedAt: new Date().valueOf(),
   });
   await task.save();
 
@@ -112,5 +114,7 @@ it("create a project with valid inputs with tasks", async () => {
 
   expect(projects).toHaveLength(2);
   expect(projects[1].description).toBe("description");
-  expect(projects[1].tasks).toContainEqual(mongoose.Types.ObjectId(task.id));
+  expect(projects[1].tasks.toString()).toContain(
+    mongoose.Types.ObjectId(task.id).toHexString()
+  );
 });

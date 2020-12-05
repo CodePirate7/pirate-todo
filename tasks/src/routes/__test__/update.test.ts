@@ -2,6 +2,7 @@ import request from "supertest";
 import mongoose from "mongoose";
 import { app } from "../../app";
 import { Task } from "../../models/task";
+import { natsWrapper } from "../../nats-wrapper";
 
 it("has a route handler listening to /api/tasks/:id for put requests", async () => {
   const id = new mongoose.Types.ObjectId().toHexString();
@@ -66,4 +67,22 @@ it("returns a 401 if the user does not own the task", async () => {
       title: "modify",
     })
     .expect(401);
+});
+
+it("publishes an updated event", async () => {
+  const cookie = global.signin();
+
+  const response = await global.createTask(cookie);
+
+  await request(app)
+    .put(`/api/tasks/${response.body.id}`)
+    .set("Cookie", cookie)
+    .send({
+      title: "modify title",
+      urgent: true,
+      important: true,
+    })
+    .expect(200);
+
+  expect(natsWrapper.client.publish).toHaveBeenCalled();
 });

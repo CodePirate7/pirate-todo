@@ -29,9 +29,8 @@ router.post(
       progress: 0,
     });
     await task.save();
-    console.log(task);
     //@ts-ignore
-    new TaskCreatedPublisher(natsWrapper.client).publish(task.toJSON());
+    new TaskCreatedPublisher(natsWrapper.client).publish(task);
 
     res.status(201).send(task);
   }

@@ -12,7 +12,10 @@ export class TaskUpdatedListener extends Listener<TaskUpdatedEvent> {
     if (!task) {
       throw new Error("task not found");
     }
-    task.set({ ...task });
+
+    task.set({
+      ...data,
+    });
 
     await task.save();
 

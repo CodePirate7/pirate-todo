@@ -14,6 +14,8 @@ const buildTask = async (cookie: string[]) => {
     completed: false,
     progress: 0,
     id: mongoose.Types.ObjectId().toHexString(),
+    createdAt: new Date().valueOf(),
+    updatedAt: new Date().valueOf(),
   });
   await task.save();
   return task;

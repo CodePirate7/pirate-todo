@@ -2,6 +2,7 @@ import request from "supertest";
 import mongoose from "mongoose";
 import { app } from "../../app";
 import { Task } from "../../models/task";
+import { natsWrapper } from "../../nats-wrapper";
 
 it("has a route handler listening to /api/tasks/:id for delete requests", async () => {
   const id = new mongoose.Types.ObjectId().toHexString();
@@ -57,4 +58,19 @@ it("delete own task", async () => {
 
   tasks = await Task.findById(response.body.id);
   expect(tasks).toBeNull();
+});
+
+it("publishes an deleted event", async () => {
+  const cookie = global.signin();
+  const response = await global.createTask(cookie);
+  let tasks = await Task.findById(response.body.id);
+  expect(tasks).not.toBeNull();
+
+  await request(app)
+    .delete(`/api/tasks/${response.body.id}`)
+    .set("Cookie", cookie)
+    .send()
+    .expect(200);
+
+  expect(natsWrapper.client.publish).toHaveBeenCalled();
 });
