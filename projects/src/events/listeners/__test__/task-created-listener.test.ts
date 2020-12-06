@@ -31,6 +31,14 @@ const setup = async () => {
 };
 // Create the fake data event
 
+it("ack the message", async () => {
+  const { listener, data, msg } = await setup();
+
+  await listener.onMessage(data, msg);
+
+  expect(msg.ack).toHaveBeenCalled();
+});
+
 it("creates and saves a task", async () => {
   const { listener, data, msg } = await setup();
 

@@ -44,7 +44,26 @@ const setup = async () => {
 
   return { listener, data, msg, task };
 };
-// Create the fake data event
+
+it("ack the message", async () => {
+  const { listener, data, msg } = await setup();
+
+  await listener.onMessage(data, msg);
+
+  expect(msg.ack).toHaveBeenCalled();
+});
+
+it("does not call ask if task is not found", async () => {
+  const { listener, data, msg } = await setup();
+
+  data.id = mongoose.Types.ObjectId().toHexString();
+
+  try {
+    await listener.onMessage(data, msg);
+  } catch (err) {}
+
+  expect(msg.ack).not.toHaveBeenCalled();
+});
 
 it("finds, updates, and saves a task", async () => {
   const { listener, data, msg, task } = await setup();
@@ -57,4 +76,6 @@ it("finds, updates, and saves a task", async () => {
   delete data.userId;
   expect(updatedTask!.title).toEqual(data.title);
   expect(updatedTask!.completed).toEqual(data.completed);
+
+  msg;
 });
